@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ── Google Fonts are loaded via index.html ── */
+
+@layer base {
+  :root {
+    --bg-primary: #070b14;
+    --bg-secondary: #0d1527;
+    --bg-card: rgba(13, 21, 42, 0.75);
+    --border-card: rgba(56, 189, 248, 0.14);
+    --accent-cyan: #38bdf8;
+    --accent-violet: #818cf8;
+    --accent-emerald: #34d399;
+    --accent-amber: #f59e0b;
+    --accent-rose: #fb7185;
+    --accent-teal: #06b6d4;
+    --accent-purple: #a78bfa;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: #f1f5f9;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #070b14; }
+::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(56,189,248,0.5); }
+
+/* ── Glassmorphism panel ── */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Hover lift ── */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 16px 48px rgba(56,189,248,0.12);
+  border-color: rgba(56,189,248,0.3);
+}
+
+/* ── Pulsing glow ring ── */
+.glow-ring-cyan {
+  box-shadow: 0 0 0 0 rgba(56,189,248,0.5);
+  animation: pulseRing 2.5s ease-out infinite;
+}
+
+/* ── Global keyframes ── */
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(56,189,248,0.4); }
+  70% { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-130%); }
+  100% { transform: translateY(130%); }
+}
+
+@keyframes gridScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Tailwind animation utility ── */
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+.animate-fadeSlideIn {
+  animation: fadeSlideIn 0.5s ease both;
+}
+
+/* ── Number font ── */
+.font-mono-num {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ── Text gradient utilities ── */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #f59e0b, #fb7185);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: rgba(56,189,248,0.35);
+  color: white;
+}
